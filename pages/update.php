@@ -1,7 +1,6 @@
 <?php
 include "../config/database.php";
 
-// Ambil data berdasarkan no_uat
 if (isset($_GET['no_uat'])) {
     $no_uat = $_GET['no_uat'];
     $sql = "SELECT * FROM deployment WHERE no_uat='$no_uat'";

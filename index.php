@@ -36,41 +36,42 @@ $result = $conn->query($sql);
   </div>
 
   <!-- Data Deployment Section -->
-  <div class="m-12">
-    <div class="container mx-auto p-8 shadow-lg rounded-lg bg-white">
-      <h2 class="text-3xl font-semibold mb-6 text-black">Data Deployment</h2>
+  <div class="m-4 sm:m-12">
+    <div class="container mx-auto p-4 sm:p-8 shadow-lg rounded-lg bg-white">
+      <h2 class="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-6 text-black text-center">Data Deployment</h2>
 
       <?php if ($result->num_rows > 0): ?>
-        <div class="overflow-x-auto mb-6">
+        <!-- Membuat tabel scrollable di layar kecil -->
+        <div class="overflow-x-auto">
           <table class="min-w-full bg-white table-auto border-separate border-spacing-0 rounded-lg shadow-md">
             <thead class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
               <tr>
-                <th class="py-3 px-6 text-left text-white font-medium">No UAT</th>
-                <th class="py-3 px-6 text-left text-white font-medium">Alamat Kantor</th>
-                <th class="py-3 px-6 text-left text-white font-medium">Nama User</th>
-                <th class="py-3 px-6 text-left text-white font-medium">Nama Engineer</th>
-                <th class="py-3 px-6 text-left text-white font-medium">Deploy ISO</th>
-                <th class="py-3 px-6 text-left text-white font-medium">Tipe Perangkat</th>
-                <th class="py-3 px-6 text-left text-white font-medium">Tanggal Pengerjaan</th>
+                <th class="py-2 sm:py-3 px-4 sm:px-6 text-left text-white font-medium">No UAT</th>
+                <th class="py-2 sm:py-3 px-4 sm:px-6 text-left text-white font-medium">Alamat Kantor</th>
+                <th class="py-2 sm:py-3 px-4 sm:px-6 text-left text-white font-medium">Nama User</th>
+                <th class="py-2 sm:py-3 px-4 sm:px-6 text-left text-white font-medium">Nama Engineer</th>
+                <th class="py-2 sm:py-3 px-4 sm:px-6 text-left text-white font-medium">Deploy ISO</th>
+                <th class="py-2 sm:py-3 px-4 sm:px-6 text-left text-white font-medium">Tipe Perangkat</th>
+                <th class="py-2 sm:py-3 px-4 sm:px-6 text-left text-white font-medium">Tanggal Pengerjaan</th>
               </tr>
             </thead>
             <tbody>
               <?php while ($row = $result->fetch_assoc()): ?>
                 <tr class="hover:bg-gray-100 transition-all">
-                  <td class="py-4 px-6 text-gray-800 border-b"><?php echo $row['no_uat']; ?></td>
-                  <td class="py-4 px-6 text-gray-800 border-b"><?php echo $row['alamat_kantor']; ?></td>
-                  <td class="py-4 px-6 text-gray-800 border-b"><?php echo $row['nama_user']; ?></td>
-                  <td class="py-4 px-6 text-gray-800 border-b"><?php echo $row['nama_engineer']; ?></td>
-                  <td class="py-4 px-6 text-gray-800 border-b"><?php echo $row['deploy_iso']; ?></td>
-                  <td class="py-4 px-6 text-gray-800 border-b"><?php echo $row['tipe_perangkat']; ?></td>
-                  <td class="py-4 px-6 text-gray-800 border-b"><?php echo $row['tanggal_pengerjaan']; ?></td>
+                  <td class="py-2 sm:py-4 px-4 sm:px-6 text-gray-800 border-b"><?php echo $row['no_uat']; ?></td>
+                  <td class="py-2 sm:py-4 px-4 sm:px-6 text-gray-800 border-b"><?php echo $row['alamat_kantor']; ?></td>
+                  <td class="py-2 sm:py-4 px-4 sm:px-6 text-gray-800 border-b"><?php echo $row['nama_user']; ?></td>
+                  <td class="py-2 sm:py-4 px-4 sm:px-6 text-gray-800 border-b"><?php echo $row['nama_engineer']; ?></td>
+                  <td class="py-2 sm:py-4 px-4 sm:px-6 text-gray-800 border-b"><?php echo $row['deploy_iso']; ?></td>
+                  <td class="py-2 sm:py-4 px-4 sm:px-6 text-gray-800 border-b"><?php echo $row['tipe_perangkat']; ?></td>
+                  <td class="py-2 sm:py-4 px-4 sm:px-6 text-gray-800 border-b"><?php echo $row['tanggal_pengerjaan']; ?></td>
                 </tr>
               <?php endwhile; ?>
             </tbody>
           </table>
         </div>
       <?php else: ?>
-        <p class="text-lg text-gray-600">Tidak ada data untuk ditampilkan.</p>
+        <p class="text-lg text-gray-600 text-center">Tidak ada data untuk ditampilkan.</p>
       <?php endif; ?>
     </div>
   </div>
@@ -79,20 +80,17 @@ $result = $conn->query($sql);
   <!-- Footer Section -->
   <footer class="bg-gradient-to-r from-indigo-400 via-purple-400 py-8 text-white mt-auto">
     <div class="container mx-auto flex flex-col items-center justify-center text-center md:flex-row md:justify-between md:items-center">
-
       <!-- Logo Permata -->
       <div>
         <a href="https://www.permatabank.com/" target="_blank">
           <img class="w-28 mb-4 md:mb-0" src="assets/logo_lotus.png" alt="Permata Logo" />
         </a>
       </div>
-
       <!-- Text Footer -->
       <div class="flex flex-col items-center text-sm md:flex-row md:items-center md:space-x-4 mb-4 md:mb-0">
         <div class="mb-4 ">
           <p class="text-md">Septian 2025</p>
         </div>
-
         <!-- Social Media Links -->
         <div class="flex flex-col items-center w-full space-y-4">
           <a href="https://github.com/septianadip17/" target="_blank" class="text-white hover:text-gray-200 w-full text-center">Github</a>
@@ -100,7 +98,6 @@ $result = $conn->query($sql);
           <a href="https://wa.me/6289696135242" target="_blank" class="text-white hover:text-gray-200 w-full text-center">WhatsApp</a>
         </div>
       </div>
-
       <!-- Logo Nomina -->
       <div>
         <a href="https://www.nominatix.com/" target="_blank">
