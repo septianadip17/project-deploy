@@ -12,6 +12,7 @@ $result = $conn->query($sql);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Deployment App</title>
+  <link rel="icon" href="assets/logo.png" type="image/png">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
@@ -35,11 +36,11 @@ $result = $conn->query($sql);
   </div>
 
   <!-- Data Deployment Section -->
-  <div class="container mx-auto p-8 mt-12  shadow-lg rounded-lg">
+  <div class="container mx-auto p-8 mt-12 shadow-lg rounded-lg bg-white">
     <h2 class="text-3xl font-semibold mb-6 text-black">Data Deployment</h2>
 
     <?php if ($result->num_rows > 0): ?>
-      <div class="overflow-x-auto">
+      <div class="overflow-x-auto mb-6">
         <table class="min-w-full bg-white table-auto border-separate border-spacing-0 rounded-lg shadow-md">
           <thead class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
             <tr>
@@ -71,7 +72,41 @@ $result = $conn->query($sql);
       <p class="text-lg text-gray-600">Tidak ada data untuk ditampilkan.</p>
     <?php endif; ?>
   </div>
+  <!-- End of Data Deployment Section -->
 
+  <!-- Footer Section -->
+  <footer class="bg-gradient-to-r from-indigo-400 via-purple-400 py-8 text-white mt-auto">
+    <div class="container mx-auto flex flex-col items-center justify-center text-center md:flex-row md:justify-between md:items-center">
+
+      <!-- Logo Permata -->
+      <div>
+        <a href="https://www.permatabank.com/" target="_blank">
+          <img class="w-28 mb-4 md:mb-0" src="assets/logo_lotus.png" alt="Permata Logo" />
+        </a>
+      </div>
+
+      <!-- Text Footer -->
+      <div class="flex flex-col items-center text-sm md:flex-row md:items-center md:space-x-4 mb-4 md:mb-0">
+        <div class="mb-4 ">
+          <p class="text-md">Septian 2025</p>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="flex flex-col items-center w-full space-y-4">
+          <a href="https://github.com/septianadip17/" target="_blank" class="text-white hover:text-gray-200 w-full text-center">Github</a>
+          <a href="https://www.linkedin.com/in/septianadip17/" target="_blank" class="text-white hover:text-gray-200 w-full text-center">Linkedin</a>
+          <a href="https://wa.me/6289696135242" target="_blank" class="text-white hover:text-gray-200 w-full text-center">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Logo Nomina -->
+      <div>
+        <a href="https://www.nominatix.com/" target="_blank">
+          <img src="assets/nomina_logo.png" alt="Nomina Logo" class="w-20 mb-4 md:mb-0 md:mr-4 shadow-lg" />
+        </a>
+      </div>
+    </div>
+  </footer>
 
 </body>
 
