@@ -39,13 +39,12 @@ $result = $conn->query($sql);
   <div class="m-4 sm:m-12">
     <div class="container mx-auto p-4 sm:p-8 shadow-lg rounded-lg bg-white">
       <h2 class="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-6 text-black text-center">Data Deployment</h2>
-
       <?php if ($result->num_rows > 0): ?>
-        <!-- Membuat tabel scrollable di layar kecil -->
         <div class="overflow-x-auto">
           <table class="min-w-full bg-white table-auto border-separate border-spacing-0 rounded-lg shadow-md">
             <thead class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
               <tr>
+                <th class="py-2 sm:py-3 px-4 sm:px-6 text-left text-white font-medium">No.</th> 
                 <th class="py-2 sm:py-3 px-4 sm:px-6 text-left text-white font-medium">No UAT</th>
                 <th class="py-2 sm:py-3 px-4 sm:px-6 text-left text-white font-medium">Alamat Kantor</th>
                 <th class="py-2 sm:py-3 px-4 sm:px-6 text-left text-white font-medium">Nama User</th>
@@ -56,8 +55,10 @@ $result = $conn->query($sql);
               </tr>
             </thead>
             <tbody>
+              <?php $nomor = 1; ?>
               <?php while ($row = $result->fetch_assoc()): ?>
                 <tr class="hover:bg-gray-100 transition-all">
+                  <td class="py-2 sm:py-4 px-4 sm:px-6 text-gray-800 border-b"><?php echo $nomor++; ?></td>
                   <td class="py-2 sm:py-4 px-4 sm:px-6 text-gray-800 border-b"><?php echo $row['no_uat']; ?></td>
                   <td class="py-2 sm:py-4 px-4 sm:px-6 text-gray-800 border-b"><?php echo $row['alamat_kantor']; ?></td>
                   <td class="py-2 sm:py-4 px-4 sm:px-6 text-gray-800 border-b"><?php echo $row['nama_user']; ?></td>
@@ -68,6 +69,7 @@ $result = $conn->query($sql);
                 </tr>
               <?php endwhile; ?>
             </tbody>
+
           </table>
         </div>
       <?php else: ?>

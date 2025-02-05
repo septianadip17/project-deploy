@@ -16,14 +16,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tipe_perangkat = $_POST['tipe_perangkat'];
     $tanggal_pengerjaan = $_POST['tanggal_pengerjaan'];
 
-    // Query untuk menambahkan data
-    $sql = "INSERT INTO deployment (no_uat, alamat_kantor, nama_user, nama_engineer, deploy_iso, tipe_perangkat, tanggal_pengerjaan) 
-            VALUES ('$no_uat', '$alamat_kantor', '$nama_user', '$nama_engineer', '$deploy_iso', '$tipe_perangkat', '$tanggal_pengerjaan')";
+    // Cek apakah no_uat sudah ada di database
+    $check_sql = "SELECT * FROM deployment WHERE no_uat = '$no_uat'";
+    $result = $conn->query($check_sql);
 
-    if ($conn->query($sql) === TRUE) {
-        redirect('read.php');
+    if ($result->num_rows > 0) {
+        $error_message = "No UAT sudah terdaftar!";
     } else {
-        $error_message = "Error: " . $sql . "<br>" . $conn->error;
+        $sql = "INSERT INTO deployment (no_uat, alamat_kantor, nama_user, nama_engineer, deploy_iso, tipe_perangkat, tanggal_pengerjaan) 
+                VALUES ('$no_uat', '$alamat_kantor', '$nama_user', '$nama_engineer', '$deploy_iso', '$tipe_perangkat', '$tanggal_pengerjaan')";
+
+        if ($conn->query($sql) === TRUE) {
+            redirect('read.php');
+        } else {
+            $error_message = "Error: " . $sql . "<br>" . $conn->error;
+        }
     }
 }
 ?>

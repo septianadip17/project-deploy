@@ -29,13 +29,14 @@ $result = $conn->query($sql);
   </nav>
 
   <!-- Table to display data -->
-  <div class="container mx-auto p-4 sm:p-8 m-6 bg-white shadow-xl rounded-lg border border-gray-200 h-screen">
+  <div class="container mx-auto p-4 sm:p-8 m-6 bg-white shadow-xl rounded-lg border border-gray-200">
     <h1 class="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-6">Data Deployment</h1>
 
     <div class="overflow-x-auto">
       <table class="min-w-full table-auto border-collapse">
         <thead>
           <tr class="bg-gradient-to-r from-blue-500 to-green-500 text-white">
+            <th class="border border-gray-300 px-4 py-2 sm:px-6 sm:py-3 text-left">No.</th>
             <th class="border border-gray-300 px-4 py-2 sm:px-6 sm:py-3 text-left">No UAT</th>
             <th class="border border-gray-300 px-4 py-2 sm:px-6 sm:py-3 text-left">Alamat Kantor</th>
             <th class="border border-gray-300 px-4 py-2 sm:px-6 sm:py-3 text-left">Nama User</th>
@@ -47,8 +48,12 @@ $result = $conn->query($sql);
           </tr>
         </thead>
         <tbody>
-          <?php while ($row = $result->fetch_assoc()) { ?>
+          <?php
+          $no = 1;
+          while ($row = $result->fetch_assoc()) {
+          ?>
             <tr class="hover:bg-gray-50 transition duration-200">
+              <td class="border px-4 py-2 sm:px-6 sm:py-4"><?= $no++; ?></td> <!-- Menampilkan nomor urut -->
               <td class="border px-4 py-2 sm:px-6 sm:py-4"><?= $row['no_uat']; ?></td>
               <td class="border px-4 py-2 sm:px-6 sm:py-4"><?= $row['alamat_kantor']; ?></td>
               <td class="border px-4 py-2 sm:px-6 sm:py-4"><?= $row['nama_user']; ?></td>
@@ -66,7 +71,6 @@ $result = $conn->query($sql);
       </table>
     </div>
   </div>
-
 
   <!-- Footer Section -->
   <footer class="bg-gradient-to-r from-blue-400 via-green-400 py-8 text-white mt-auto">
@@ -101,7 +105,6 @@ $result = $conn->query($sql);
       </div>
     </div>
   </footer>
-
 
 </body>
 
