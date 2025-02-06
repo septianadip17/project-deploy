@@ -32,7 +32,7 @@ $result = $conn->query($sql);
   <div class="container mx-auto p-8 mt-8 text-center">
     <h1 class="text-4xl font-extrabold mb-6 text-gray-800">Selamat datang di Aplikasi Data Deployment</h1>
     <p class="text-lg mb-6 w-3/4 mx-auto text-gray-600">Aplikasi ini digunakan untuk mengelola data deployment perangkat yang ada di Bank Permata. Anda dapat menambah, mengedit, atau menghapus data deployment.</p>
-    <a href="pages/read.php" class="bg-blue-600 px-8 py-4 rounded-lg text-white text-xl font-semibold hover:bg-blue-700 transition-all">Lihat Data Deployment</a>
+    <a href="pages/read.php" class="bg-blue-600 px-8 py-4 rounded-lg text-white text-xl font-semibold hover:bg-blue-700 transition-all">Kelola Data Deployment</a>
   </div>
 
   <!-- Data Deployment Section -->

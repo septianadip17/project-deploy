@@ -3,7 +3,6 @@ include_once __DIR__ . '/../functions/deployment_functions.php';
 include_once __DIR__ . '/../partials/head.php';
 include_once __DIR__ . '/../partials/navbar.php';
 
-// Fungsi untuk menghapus data
 if (isset($_GET['no_uat'])) {
     $no_uat = $_GET['no_uat'];
     deleteDeployment($no_uat);

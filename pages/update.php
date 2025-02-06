@@ -1,22 +1,15 @@
 <?php
 include "../config/database.php";
 
-if (isset($_GET['no_uat'])) {
-    $no_uat = $_GET['no_uat'];
+function getDeploymentData($conn, $no_uat)
+{
     $sql = "SELECT * FROM deployment WHERE no_uat='$no_uat'";
     $result = $conn->query($sql);
-    $data = $result->fetch_assoc();
+    return $result->fetch_assoc();
 }
 
-// Proses update data
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $alamat_kantor = $_POST['alamat_kantor'];
-    $nama_user = $_POST['nama_user'];
-    $nama_engineer = $_POST['nama_engineer'];
-    $deploy_iso = $_POST['deploy_iso'];
-    $tipe_perangkat = $_POST['tipe_perangkat'];
-    $tanggal_pengerjaan = $_POST['tanggal_pengerjaan'];
-
+function updateDeploymentData($conn, $no_uat, $alamat_kantor, $nama_user, $nama_engineer, $deploy_iso, $tipe_perangkat, $tanggal_pengerjaan)
+{
     $sql = "UPDATE deployment SET 
                 alamat_kantor='$alamat_kantor', 
                 nama_user='$nama_user', 
@@ -27,21 +20,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             WHERE no_uat='$no_uat'";
 
     if ($conn->query($sql) === TRUE) {
+        return true;
+    } else {
+        return $conn->error;
+    }
+}
+
+if (isset($_GET['no_uat'])) {
+    $no_uat = $_GET['no_uat'];
+    $data = getDeploymentData($conn, $no_uat);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $alamat_kantor = $_POST['alamat_kantor'];
+    $nama_user = $_POST['nama_user'];
+    $nama_engineer = $_POST['nama_engineer'];
+    $deploy_iso = $_POST['deploy_iso'];
+    $tipe_perangkat = $_POST['tipe_perangkat'];
+    $tanggal_pengerjaan = $_POST['tanggal_pengerjaan'];
+
+    $updateResult = updateDeploymentData($conn, $no_uat, $alamat_kantor, $nama_user, $nama_engineer, $deploy_iso, $tipe_perangkat, $tanggal_pengerjaan);
+
+    if ($updateResult === true) {
         echo "<script>alert('Data berhasil diperbarui!'); window.location.href='read.php';</script>";
     } else {
-        echo "Error: " . $conn->error;
+        echo "Error: " . $updateResult;
     }
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Data</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
+
 <body class="bg-gray-100 flex justify-center items-center h-screen">
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
         <h2 class="text-xl font-bold mb-4">Edit Data Deployment</h2>
@@ -74,4 +91,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
 </body>
+
 </html>
