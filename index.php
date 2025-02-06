@@ -77,7 +77,6 @@ $result = $conn->query($sql);
       <?php endif; ?>
     </div>
   </div>
-  <!-- End of Data Deployment Section -->
 
   <!-- Footer Section -->
   <footer class="bg-gradient-to-r from-indigo-400 via-purple-400 py-8 text-white mt-auto">
