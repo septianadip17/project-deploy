@@ -1,7 +1,6 @@
 <?php
 include "../config/database.php";
 
-// Fungsi untuk redirect
 function redirect($url)
 {
     header("Location: $url");
